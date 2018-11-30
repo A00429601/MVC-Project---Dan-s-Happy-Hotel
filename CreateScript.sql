@@ -1,7 +1,7 @@
 USE [RentalProject]
 GO
 
-/****** Object:  Table [dbo].[UserAccount]    Script Date: 11/30/2018 1:47:32 AM ******/
+/****** Object:  Table [dbo].[UserAccount]    Script Date: 11/30/2018 1:22:23 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[UserAccount](
-	[userID] [nvarchar](50) NOT NULL,
+	[userID] [bigint] IDENTITY(1,1) NOT NULL,
 	[firstName] [nvarchar](max) NULL,
 	[lastName] [nvarchar](max) NULL,
 	[email] [nvarchar](max) NULL,
@@ -25,7 +25,7 @@ GO
 USE [RentalProject]
 GO
 
-/****** Object:  Table [dbo].[Car]    Script Date: 11/30/2018 1:47:38 AM ******/
+/****** Object:  Table [dbo].[Car]    Script Date: 11/30/2018 1:22:33 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -33,10 +33,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Car](
-	[carID] [nvarchar](50) NOT NULL,
+	[carID] [bigint] IDENTITY(1,1) NOT NULL,
 	[carName] [nvarchar](max) NULL,
 	[carType] [nvarchar](max) NULL,
-	[carImage] [nvarchar](max) NULL,
+	[carImage] [image] NULL,
  CONSTRAINT [PK_Car] PRIMARY KEY CLUSTERED 
 (
 	[carID] ASC
@@ -47,7 +47,7 @@ GO
 USE [RentalProject]
 GO
 
-/****** Object:  Table [dbo].[Pricing]    Script Date: 11/30/2018 1:47:52 AM ******/
+/****** Object:  Table [dbo].[Pricing]    Script Date: 11/30/2018 1:22:41 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -55,8 +55,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Pricing](
-	[pricingID] [nvarchar](50) NOT NULL,
-	[carID] [nvarchar](50) NULL,
+	[pricingID] [bigint] IDENTITY(1,1) NOT NULL,
+	[carID] [bigint] NULL,
 	[rate] [decimal](18, 2) NULL,
  CONSTRAINT [PK_Pricing] PRIMARY KEY CLUSTERED 
 (
@@ -75,7 +75,7 @@ GO
 USE [RentalProject]
 GO
 
-/****** Object:  Table [dbo].[Reservation]    Script Date: 11/30/2018 1:48:03 AM ******/
+/****** Object:  Table [dbo].[Reservation]    Script Date: 11/30/2018 1:22:49 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -83,11 +83,11 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Reservation](
-	[resID] [nvarchar](50) NOT NULL,
-	[userID] [nvarchar](50) NULL,
-	[carID] [nvarchar](50) NULL,
-	[fromDate] [datetime] NULL,
-	[toDate] [datetime] NULL,
+	[resID] [bigint] IDENTITY(1,1) NOT NULL,
+	[userID] [bigint] NULL,
+	[carID] [bigint] NULL,
+	[fromDate] [date] NULL,
+	[toDate] [date] NULL,
  CONSTRAINT [PK_Reservation] PRIMARY KEY CLUSTERED 
 (
 	[resID] ASC
